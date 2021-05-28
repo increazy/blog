@@ -89,6 +89,7 @@ collections:
             { label: 'Vtex', value: 'vtex' },
             { label: 'Magento 1.9.x', value: 'magento 1.9.x' },
             { label: 'Magento 2.3.x', value: 'magento 2.3.x' },
+            { label: 'Assets', value: 'assets' },
             { label: 'Publication', value: 'publication' },
             { label: 'Deploy', value: 'deploy' },
           ],
