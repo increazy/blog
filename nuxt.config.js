@@ -45,7 +45,7 @@ export default {
       },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap'
+        href: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap'
       },
     ], // ? Imports the font 'Inter', can be optimized by the netlify plugin 'Subfont' by uncommenting it in `netlify.toml`
     noscript: [

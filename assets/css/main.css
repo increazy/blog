@@ -1,7 +1,7 @@
 *,
 a {
   color: #03151e;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'Roboto', sans-serif;
 }
 
 @keyframes cursorAnimation {

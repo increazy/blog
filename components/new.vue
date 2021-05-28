@@ -104,6 +104,7 @@ export default {
 
 .new {
   padding: 10px 5px;
+  wdth: 100%;
 }
 
 .new,
@@ -127,10 +128,10 @@ export default {
   color: #03151e;
   transition: 0.6s;
 }
-
+/* 
 .new:not(:last-child) {
   border-bottom: 1px dashed #03151e;
-}
+} */
 
 h3 {
   font-size: 24px;
