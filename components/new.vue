@@ -101,6 +101,33 @@ export default {
   margin: 0px;
   padding: 0px;
 }
+
+.new {
+  padding: 10px 5px;
+}
+
+.new,
+.new * {
+  transition: 0.6s;
+}
+
+.new:hover {
+  color: #fafafa;
+  background: #03151e;
+  transition: 0.6s;
+}
+
+.new:hover * {
+  color: #fafafa;
+  transition: 0.6s;
+}
+
+.new:hover .meta .tags .tag {
+  background: #fafafa;
+  color: #03151e;
+  transition: 0.6s;
+}
+
 .new:not(:last-child) {
   border-bottom: 1px dashed #03151e;
 }

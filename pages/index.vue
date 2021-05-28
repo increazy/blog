@@ -5,7 +5,7 @@
         <span class="cursor"> ᐅ </span>
         Novas postagens
       </h2>
-      <new side="left" type="blog" class="col-12" amount="3" />
+      <new side="left" type="blog" class="col-12" :amount="3" />
     </section>
 
     <section class="row news">
@@ -13,7 +13,7 @@
         Novas documentações
         <span class="cursor">&nbsp;ᐊ </span>
       </h2>
-      <new side="right" type="docs" class="col-12" amount="3" />
+      <new side="right" type="docs" class="col-12" :amount="3" />
     </section>
   </main>
 </template>
