@@ -52,7 +52,7 @@ collections:
           name: 'tags',
           widget: 'select',
           default: 'select an tag',
-          multiple: true
+          multiple: true,
           options: [
             { label: 'Increazy E-commerce', value: 'increazy ecommerce' },
             { label: 'Increazy CLI', value: 'increazy cli' },
@@ -80,7 +80,7 @@ collections:
           name: 'tags',
           widget: 'select',
           default: 'select an tag',
-          multiple: true
+          multiple: true,
           options: [
             { label: 'Hooks', value: 'hooks' },
             { label: 'Pages', value: 'pages' },
