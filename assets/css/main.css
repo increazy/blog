@@ -1,0 +1,56 @@
+*,
+a {
+  color: #03151e;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+@keyframes cursorAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-o-keyframes cursorAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes cursorAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes cursorAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.cursor {
+  -webkit-animation: cursorAnimation 2s infinite;
+  -moz-animation: cursorAnimation 2s infinite;
+  -o-animation: cursorAnimation 2s infinite;
+  animation: cursorAnimation 2s infinite;
+}

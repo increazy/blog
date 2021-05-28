@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="grid">
     <Header />
     <nuxt />
     <Footer />
