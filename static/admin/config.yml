@@ -37,7 +37,7 @@ collections:
             }
           # - { label: Site Email, name: siteemail, widget: string, required: false }
   - name: 'blog'
-    label: 'Blog'
+    label: 'Posts'
     folder: 'content/blog'
     create: true
     format: 'frontmatter'
@@ -47,37 +47,24 @@ collections:
     fields:
       - { label: 'Title', name: 'title', widget: 'string', required: true }
       - { label: 'Description', name: 'description', widget: 'string', required: false }
-      - { label: 'Body', name: 'body', widget: 'markdown', required: false }
-  - name: 'projects'
-    label: 'Projects'
-    label_singular: 'Project'
-    folder: 'content/projects'
-    create: true
-    format: 'frontmatter'
-    slug: '{{slug}}'
-    preview_path: 'projects/{{slug}}'
-    fields:
       - {
-          label: 'Project Category',
-          name: 'category',
+          label: 'Post Type',
+          name: 'tags',
           widget: 'select',
-          default: 'animals',
-          options: [{ label: 'Animals', value: 'animals' }, { label: 'Food', value: 'food' }],
+          default: 'select an tag',
+          multiple: true
+          options: [
+            { label: 'Increazy E-commerce', value: 'increazy ecommerce' },
+            { label: 'Increazy CLI', value: 'increazy cli' },
+            { label: 'Increazy Checkout', value: 'increazy checkout' },
+            { label: 'Increazy Pay', value: 'increazy pay' },
+            { label: 'Business', value: 'business' },
+            { label: 'Tech', value: 'tech' },
+          ],
         }
-      - { label: 'Title', name: 'title', widget: 'string', required: true }
-      - { label: 'Description', name: 'description', widget: 'string', required: false }
-      - { label: 'Cover Image', name: 'cover', widget: 'image', required: false, allow_multiple: false }
-      - { label: 'Content', name: 'body', widget: 'markdown', required: false }
-      - {
-          label: 'Gallery',
-          name: 'gallery',
-          widget: 'list',
-          required: false,
-          summary: '{{fields.image}}',
-          field: { label: 'Image', name: 'image', widget: 'image' },
-        }
+      - { label: 'Body', name: 'body', widget: 'markdown', required: false }
   - name: 'docs'
-    label: 'Docs'
+    label: 'Documentation'
     folder: 'content/docs'
     create: true
     format: 'frontmatter'
@@ -89,14 +76,20 @@ collections:
       - { label: 'Description', name: 'description', widget: 'string', required: false }
       - { label: 'Body', name: 'body', widget: 'markdown', required: false }
       - {
-          label: 'Doc Tag',
+          label: 'Doc Type',
           name: 'tags',
           widget: 'select',
-          default: 'selecione a tag',
+          default: 'select an tag',
+          multiple: true
           options: [
-            { label: 'Hooks', value: 'hooks' }, 
-            { label: 'Páginas', value: 'paginas' },
-            { label: 'Componentes', value: 'componentes' },
-            { label: 'Loading Skeleton', value: 'skeleton' }
+            { label: 'Hooks', value: 'hooks' },
+            { label: 'Pages', value: 'pages' },
+            { label: 'Components', value: 'components' },
+            { label: 'Loading', value: 'skeleton' },
+            { label: 'Vtex', value: 'vtex' },
+            { label: 'Magento 1.9.x', value: 'magento 1.9.x' },
+            { label: 'Magento 2.3.x', value: 'magento 2.3.x' },
+            { label: 'Publication', value: 'publication' },
+            { label: 'Deploy', value: 'deploy' },
           ],
         }
