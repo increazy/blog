@@ -1,10 +1,10 @@
 <template>
   <main class="grid">
     <section class="row news fg-dark bg-light bd-yellow">
-      <div class="col-6">
+      <nuxt-link to="/blog" class="col-6">
         <h2 class="col-12 fg-yellow">Novas<br />postagens</h2>
         <img src="~/assets/imgs/blog.jpg" alt="Blog" />
-      </div>
+      </nuxt-link>
 
       <section class="col-6 grid list">
         <new side="left" hover="yellow" type="blog" class="col-12" :amount="3" />
@@ -16,14 +16,28 @@
         <new side="left" hover="pink" type="docs" class="col-12" :amount="3" />
       </section>
 
-      <div class="col-6">
+      <nuxt-link to="/docs" class="col-6">
         <h2 class="col-12 fg-pink">Novas<br />documentações</h2>
         <img src="~/assets/imgs/code.jpg" alt="Code" />
-      </div>
+      </nuxt-link>
     </section>
   </main>
 </template>
 
+<script>
+import { mapMutations } from 'vuex'
+
+export default {
+  mounted() {
+    this.setClass('')
+  },
+  methods: {
+    ...mapMutations({
+      setClass: 'header/setClass',
+    }),
+  },
+}
+</script>
 <style scoped>
 main.grid {
   width: 100%;

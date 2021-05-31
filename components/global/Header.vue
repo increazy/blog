@@ -1,9 +1,17 @@
 <template>
-  <nav class="row header fg-dark" data-grid="center-space-between">
+  <nav
+    :class="`row header fg-dark ${classColor} ${classColor !== '' ? 'fg-light' : ''}`"
+    data-grid="center-space-between"
+  >
     <div class="col-2">
-      <nuxt-link class="header__logo" to="/">
+      <nuxt-link v-if="classColor === ''" class="header__logo" to="/">
         <img src="~/assets/imgs/logo.png" alt="Increazy" class="hidden-small" />
         <img src="~/assets/imgs/logo-icon.png" alt="Increazy" class="hidden-large hidden-medium" />
+      </nuxt-link>
+
+      <nuxt-link v-if="classColor !== ''" class="header__logo" to="/">
+        <img src="~/assets/imgs/logo-white.png" alt="Increazy" class="hidden-small" />
+        <img src="~/assets/imgs/logo-icon-white.png" alt="Increazy" class="hidden-large hidden-medium" />
       </nuxt-link>
     </div>
 
@@ -21,7 +29,16 @@
 
 <script>
 export default {
-  name: 'Header',
+  computed: {
+    classColor() {
+      return this.$store.state.header._class
+    },
+  },
+  watch: {
+    classColor() {
+      this.$forceUpdate()
+    },
+  },
 }
 </script>
 

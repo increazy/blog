@@ -1,7 +1,7 @@
 <template>
   <ul v-if="posts.length > 0" :data-grid="side" class="grid news-container">
     <li v-for="(post, index) in posts" :key="index" :class="`fg-${hover}--hover`" class="new bg-light-alt">
-      <nuxt-link :to="`${postType}/${post.slug}`" class="row">
+      <nuxt-link :to="`${type}/${post.slug}`" class="row">
         <h3 class="col-12" :data-grid="side">
           {{ post.title }}
         </h3>
@@ -38,6 +38,9 @@
 <script>
 export default {
   props: {
+    list: {
+      type: Array,
+    },
     type: {
       type: String,
     },
@@ -72,6 +75,14 @@ export default {
     },
   },
   async mounted() {
+    if ((this.list || []).length > 0) {
+      this.posts = this.list
+      this.posts = this.posts.map((post) => {
+        post.tags = Array.isArray(post.tags) ? post.tags : [post.tags]
+        return post
+      })
+      return
+    }
     this.loading = true
     this.posts = await this.fetchPosts()
     this.posts = this.posts.map((post) => {

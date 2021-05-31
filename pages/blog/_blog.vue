@@ -1,39 +1,85 @@
 <template>
-  <main>
-    <section v-if="post">
-      <nav class="mb-8" aria-label="go back">
-        <router-back class="block" />
-      </nav>
+  <main class="grid">
+    <nav :class="colorClass" class="row heade fg-light" data-grid="space-between" aria-label="go back">
+      <router-back />
+      <span v-if="post.updatedAt" class="time">
+        {{ formatDate(post.updatedAt) }}
+      </span>
+      <div class="tags col">
+        <span v-for="tag in post.tags" :key="tag" :class="getTagClass(tag)" class="tag fg-light">
+          {{ tag.trim() }}
+        </span>
+      </div>
+    </nav>
 
-      <article>
-        <h5
-          v-if="post.createdAt"
-          class="inline-block py-1 px-2 my-2 bg-gray text-white text-sm font-medium rounded-sm whitespace-no-wrap"
-        >{{ formatDate(post.createdAt) }}</h5>
-        <h1 class="">{{ post.title }}</h1>
-        <p class="mt-1 mb-4 text-primary-600 dark:text-primary-400">{{ post.description }}</p>
-        <nuxt-content :document="post" />
-      </article>
-    </section>
+    <article :class="colorClass" class="grid">
+      <h1 class="col-12 fg-light title" data-grid="center">{{ post.title }}</h1>
+      <p class="col-12 fg-light" data-grid="center">{{ post.description }}</p>
+    </article>
+
+    <nuxt-content :document="post" class="bg-light-alt post" />
   </main>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   async asyncData({ $content, params, error }) {
-    let post;
+    let post
     try {
-      post = await $content("blog", params.blog).fetch();
+      post = await $content('blog', params.blog).fetch()
     } catch (e) {
-      error({ message: "Blog post not found" });
+      error({ message: 'Blog post not found' })
     }
-    return { post };
+    return { post }
+  },
+  data: () => ({
+    colorClass: '',
+  }),
+  mounted() {
+    const firstTag = Array.isArray(this.post.tags) ? this.post.tags[0] : this.post.tags
+    this.colorClass = this.getTagClass(firstTag)
+    this.setClass(this.colorClass)
   },
   methods: {
     formatDate(dateString) {
       const date = new Date(dateString)
       return date.toLocaleDateString(process.env.lang) || ''
-    }
-  }
+    },
+    getTagClass(tag) {
+      const slug = tag.replace(' ', '-')
+      if (slug.startsWith('increazy-')) {
+        return `bg-${slug.replace('increazy-', '')}`
+      }
+
+      const avaliable = ['yellow', 'purple', 'orange', 'pink']
+
+      return `bg-${avaliable[Math.floor(Math.random() * avaliable.length)]}`
+    },
+    ...mapMutations({
+      setClass: 'header/setClass',
+    }),
+  },
 }
 </script>
+
+<style scoped>
+.header {
+  padding: 10px 20px;
+}
+
+.tag:not(:last-child) {
+  margin-right: 1px;
+}
+
+.title {
+  padding: 70px 0px;
+}
+
+.post {
+  width: calc(100% - 40px);
+  margin: 20px;
+  padding: 5px 10px;
+}
+</style>
