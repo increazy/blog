@@ -1,5 +1,5 @@
 <template>
-  <footer class="row" data-grid="center-center">Todos os direitos reservados - Increazy 2021</footer>
+  <footer class="row fg-dark" data-grid="center-center">Todos os direitos reservados - Increazy 2021</footer>
 </template>
 
 <script>
@@ -10,9 +10,8 @@ export default {
 
 <style lang="postcss" scoped>
 .row {
-  padding: 30px;
+  padding: 60px 0px 20px;
   font-size: 12px;
   letter-spacing: 1px;
-  border-top: 1px solid #03151e;
 }
 </style>

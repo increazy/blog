@@ -1,5 +1,5 @@
 <template>
-  <div class="grid">
+  <div id="app" class="grid bg-light">
     <Header />
     <nuxt />
     <Footer />

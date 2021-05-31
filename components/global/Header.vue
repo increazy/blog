@@ -1,5 +1,5 @@
 <template>
-  <nav class="row header" data-grid="center0space-between">
+  <nav class="row header fg-dark" data-grid="center-space-between">
     <div class="col-2">
       <nuxt-link class="header__logo" to="/">
         <img src="~/assets/imgs/logo.png" alt="Increazy" class="hidden-small" />
@@ -8,11 +8,11 @@
     </div>
 
     <ul class="col-10 list--horizontal" data-grid="right">
-      <li @click="toggleMenu()">
+      <li @click="toggleMenu()" class="fg-purple--hover">
         <nuxt-link to="/docs">Documentação</nuxt-link>
       </li>
 
-      <li @click="toggleMenu()">
+      <li @click="toggleMenu()" class="fg-purple--hover">
         <nuxt-link to="/blog">Blog</nuxt-link>
       </li>
     </ul>
@@ -29,7 +29,6 @@ export default {
 .header {
   align-items: center;
   padding: 10px;
-  border-bottom: 1px solid #03151e;
 }
 
 .list--horizontal {
@@ -38,5 +37,15 @@ export default {
 
 .list--horizontal li {
   margin: 0px 10px;
+}
+
+.header__logo {
+  display: flex;
+  align-items: flex-end;
+}
+
+img {
+  height: 35px;
+  width: auto;
 }
 </style>

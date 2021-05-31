@@ -1,25 +1,25 @@
 <template>
-  <ul v-if="posts.length > 0" class="grid news-container">
-    <li v-for="(post, index) in posts" :key="index" class="new">
+  <ul v-if="posts.length > 0" :data-grid="side" class="grid news-container">
+    <li v-for="(post, index) in posts" :key="index" :class="`fg-${hover}--hover`" class="new bg-light-alt">
       <nuxt-link :to="`${postType}/${post.slug}`" class="row">
         <h3 class="col-12" :data-grid="side">
           {{ post.title }}
         </h3>
+
+        <p class="col-12" :data-grid="side">
+          {{ post.description }}
+        </p>
 
         <div class="meta col-12 row" :data-grid="side" :data-inverted="side">
           <span class="col">
             {{ formatDate(post.updatedAt) }}
           </span>
           <div class="tags col">
-            <span v-for="tag in post.tags" :key="tag" class="tag">
+            <span v-for="tag in post.tags" :key="tag" :class="getTagClass(tag)" class="tag fg-light">
               {{ tag.trim() }}
             </span>
           </div>
         </div>
-
-        <p class="col-12" :data-grid="side">
-          {{ post.description }}
-        </p>
       </nuxt-link>
     </li>
   </ul>
@@ -42,6 +42,9 @@ export default {
       type: String,
     },
     side: {
+      type: String,
+    },
+    hover: {
       type: String,
     },
     amount: {
@@ -91,6 +94,16 @@ export default {
           error({ statusCode: 404, message: 'Erro ao tentar buscar :c' })
         })
     },
+    getTagClass(tag) {
+      const slug = tag.replace(' ', '-')
+      if (slug.startsWith('increazy-')) {
+        return `bg-${slug.replace('increazy-', '')}`
+      }
+
+      const avaliable = ['yellow', 'purple', 'orange', 'pink']
+
+      return `bg-${avaliable[Math.floor(Math.random() * avaliable.length)]}`
+    },
   },
 }
 </script>
@@ -100,67 +113,65 @@ export default {
   list-style: none;
   margin: 0px;
   padding: 0px;
+  justify-content: flex-start;
+  align-items: flex-end;
+  height: max-content;
 }
 
 .new {
-  padding: 10px 5px;
-  wdth: 100%;
+  padding: 5px 10px;
+  width: 100%;
+  height: 160px;
+  min-height: 160px;
+  max-height: 160px;
 }
 
-.new,
-.new * {
-  transition: 0.6s;
-}
-
-.new:hover {
-  color: #fafafa;
-  background: #03151e;
-  transition: 0.6s;
-}
-
-.new:hover * {
-  color: #fafafa;
-  transition: 0.6s;
-}
-
-.new:hover .meta .tags .tag {
-  background: #fafafa;
-  color: #03151e;
-  transition: 0.6s;
-}
-/* 
 .new:not(:last-child) {
-  border-bottom: 1px dashed #03151e;
-} */
+  margin-bottom: 1px;
+}
+
+.new > .row {
+  justify-content: space-between;
+  height: 100%;
+}
 
 h3 {
+  font-weight: 300;
   font-size: 24px;
   margin: 0px;
-  margin-bottom: 2px;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .meta * {
   font-size: 13px;
+  align-items: flex-end;
 }
 
 .meta .tags {
-  margin: 0px 15px;
+  margin: 0px;
+  display: flex;
+  align-items: flex-end;
 }
 
 .meta .tags .tag {
-  background: #03151e;
-  color: #fafafa;
-  margin: 0px 5px;
+  margin: 0px;
   padding: 2px;
+}
+
+.meta .tags .tag:not(:last-child) {
+  margin-right: 1px;
 }
 
 .meta[data-inverted='right'] {
   flex-flow: row-reverse;
-  justify-content: flex-start;
 }
 
 p {
-  margin: 0;
-  margin-top: 2px;
+  margin: 6px 0;
 }
 </style>

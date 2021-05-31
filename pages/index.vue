@@ -1,39 +1,60 @@
 <template>
   <main class="grid">
-    <section class="row news">
-      <h2 class="col-12">
-        <span class="cursor"> ᐅ </span>
-        Novas postagens
-      </h2>
-      <new side="left" type="blog" class="col-12" :amount="3" />
+    <section class="row news fg-dark bg-light bd-yellow">
+      <div class="col-6">
+        <h2 class="col-12 fg-yellow">Novas<br />postagens</h2>
+        <img src="~/assets/imgs/blog.jpg" alt="Blog" />
+      </div>
+
+      <section class="col-6 grid list">
+        <new side="left" hover="yellow" type="blog" class="col-12" :amount="3" />
+      </section>
     </section>
 
-    <section class="row news">
-      <h2 class="col-12" data-grid="right">
-        Novas documentações
-        <span class="cursor">&nbsp;ᐊ </span>
-      </h2>
-      <new side="right" type="docs" class="col-12" :amount="3" />
+    <section class="row news news--reverse fg-dark bg-light bd-pink">
+      <section class="col-6 grid list">
+        <new side="left" hover="pink" type="docs" class="col-12" :amount="3" />
+      </section>
+
+      <div class="col-6">
+        <h2 class="col-12 fg-pink">Novas<br />documentações</h2>
+        <img src="~/assets/imgs/code.jpg" alt="Code" />
+      </div>
     </section>
   </main>
 </template>
 
 <style scoped>
 main.grid {
-  width: 80%;
-  margin: 0px 10%;
-  padding: 50px;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
 }
 
 .news {
-  padding: 20px 0px;
-}
-
-.news:not(:last-child) {
-  margin-bottom: 50px;
+  padding: 50px 0px 0px;
+  border-bottom: 1px solid;
 }
 
 h2 {
-  font-size: 30px;
+  font-size: 36px;
+  margin-left: 30px;
+  line-height: 34px;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.news--reverse h2 {
+  margin-left: 0px;
+  padding-right: 30px;
+  text-align: right;
+}
+
+.list {
+  padding: 0px 0px 0px 20px;
+  align-items: flex-end;
+}
+.news--reverse .list {
+  padding: 0px 20px 0px 0px;
 }
 </style>
